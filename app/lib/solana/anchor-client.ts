@@ -3,28 +3,28 @@ import { Connection, PublicKey, Transaction, SystemProgram } from '@solana/web3.
 import { AnchorWallet } from '@solana/wallet-adapter-react';
 
 // This will be replaced with actual IDL after anchor build
+// To use: 
+// 1. Run `anchor build` in the anchor directory
+// 2. Copy anchor/target/idl/referral_registry.json to app/lib/solana/
+// 3. Import it and use: import idl from './referral_registry.json';
 export type ReferralRegistry = any;
 
 export const PROGRAM_ID = new PublicKey(
   process.env.NEXT_PUBLIC_PROGRAM_ID || '34x2rCppX9NA7PbvR9Lew2EKXpwWo6Xeg82bKa9muTCG'
 );
 
-export function getProgram(connection: Connection, wallet: AnchorWallet) {
-  const provider = new AnchorProvider(connection, wallet, {
-    commitment: 'confirmed',
-  });
-
-  // Note: IDL will need to be imported after anchor build
-  // For now, this is a placeholder structure
-  const idl = {
-    version: '0.1.0',
-    name: 'referral_registry',
-    instructions: [],
-    accounts: [],
-    errors: [],
-  } as Idl;
-
-  return new Program(idl, PROGRAM_ID, provider) as Program<ReferralRegistry>;
+export function getProgram(connection: Connection, wallet: AnchorWallet): any {
+  // Note: This function requires the actual IDL from anchor build
+  // For now, return a mock to prevent build errors
+  console.warn('Anchor program not initialized - run anchor build first');
+  return null;
+  
+  // Uncomment after anchor build:
+  // const provider = new AnchorProvider(connection, wallet, {
+  //   commitment: 'confirmed',
+  // });
+  // const idl = require('./referral_registry.json'); 
+  // return new Program(idl, provider);
 }
 
 export function getCampaignPDA(merchant: PublicKey, name: string) {
@@ -43,10 +43,14 @@ export interface CreateCampaignParams {
 }
 
 export async function createCampaign(
-  program: Program<ReferralRegistry>,
+  program: any,
   wallet: AnchorWallet,
   params: CreateCampaignParams
 ): Promise<string> {
+  if (!program) {
+    throw new Error('Program not initialized. Run anchor build and import IDL first.');
+  }
+  
   const [campaignPda] = getCampaignPDA(wallet.publicKey, params.name);
 
   const tx = await program.methods
@@ -68,9 +72,10 @@ export async function createCampaign(
 }
 
 export async function getCampaign(
-  program: Program<ReferralRegistry>,
+  program: any,
   campaignPda: PublicKey
 ) {
+  if (!program) return null;
   try {
     const campaign = await program.account.campaign.fetch(campaignPda);
     return campaign;
@@ -80,7 +85,8 @@ export async function getCampaign(
   }
 }
 
-export async function getAllCampaigns(program: Program<ReferralRegistry>) {
+export async function getAllCampaigns(program: any) {
+  if (!program) return [];
   try {
     const campaigns = await program.account.campaign.all();
     return campaigns;
@@ -91,13 +97,17 @@ export async function getAllCampaigns(program: Program<ReferralRegistry>) {
 }
 
 export async function logProof(
-  program: Program<ReferralRegistry>,
+  program: any,
   campaignPda: PublicKey,
   conversionId: string,
   affiliate: PublicKey,
   amount: BN,
   proofHash: number[]
 ): Promise<string> {
+  if (!program) {
+    throw new Error('Program not initialized');
+  }
+  
   const tx = await program.methods
     .logProof(conversionId, affiliate, amount, proofHash)
     .accounts({
@@ -110,10 +120,14 @@ export async function logProof(
 }
 
 export async function pauseCampaign(
-  program: Program<ReferralRegistry>,
+  program: any,
   campaignPda: PublicKey,
   merchant: PublicKey
 ): Promise<string> {
+  if (!program) {
+    throw new Error('Program not initialized');
+  }
+  
   const tx = await program.methods
     .pauseCampaign()
     .accounts({
@@ -126,10 +140,14 @@ export async function pauseCampaign(
 }
 
 export async function resumeCampaign(
-  program: Program<ReferralRegistry>,
+  program: any,
   campaignPda: PublicKey,
   merchant: PublicKey
 ): Promise<string> {
+  if (!program) {
+    throw new Error('Program not initialized');
+  }
+  
   const tx = await program.methods
     .resumeCampaign()
     .accounts({

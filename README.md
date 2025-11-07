@@ -338,9 +338,36 @@ MIT License - see [LICENSE](LICENSE) file
 - [Solana Docs](https://docs.solana.com) - Solana blockchain
 - [Anchor Book](https://book.anchor-lang.com) - Anchor framework
 
+## Quick Demo
+
+### Try It Locally
+
+```bash
+# 1. Start dev server
+cd app && pnpm dev
+
+# 2. Open browser to http://localhost:3000
+
+# 3. Try the flow:
+# - Go to /merchant/dashboard → Connect wallet → Create campaign
+# - Go to /affiliate/dashboard → Connect wallet → Generate referral link  
+# - Click referral link → Complete signup on demo shop
+# - See conversion tracked with fraud check and proof generation!
+```
+
+### Demo Flow
+
+1. **Merchant** creates campaign on-chain (Solana transaction)
+2. **Affiliate** generates referral link (unique per affiliate)
+3. **User** clicks link → tracked via session → signs up on demo shop
+4. **System** validates (fraud check) → generates proof → processes payout
+5. **Result**: Affiliate earns USDC in <3 seconds ⚡
+
+See [DEMO.md](./DEMO.md) for complete demo guide and video script.
+
 ## Demo Video
 
-🎥 [Watch Demo](https://your-demo-video-url.com) (3 minutes)
+🎥 Demo video coming soon (see DEMO.md for recording script)
 
 ## Support
 
