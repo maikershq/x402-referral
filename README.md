@@ -112,10 +112,41 @@ x402-referral/
 - Node.js 18+
 - pnpm 9+
 - Rust 1.70+
-- Solana CLI
-- Anchor 0.31.1
+- Solana CLI 2.x (via Anza)
+- Anchor CLI (latest via AVM)
 
-### 1. Clone and Install
+### 1. Install Solana CLI 2.x
+
+```bash
+# Install Solana 2.x via Anza
+sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+
+# Verify installation
+solana --version
+```
+
+### 2. Install Anchor CLI via AVM
+
+```bash
+# Install Anchor Version Manager
+cargo install --git https://github.com/coral-xyz/anchor avm --force
+
+# Verify AVM installation
+avm --version
+
+# Install latest Anchor CLI
+avm install latest
+avm use latest
+
+# Or install specific version
+# avm install 0.32.1
+# avm use 0.32.1
+
+# Verify Anchor installation
+anchor --version
+```
+
+### 3. Clone and Install
 
 ```bash
 git clone https://github.com/your-org/x402-referral.git
@@ -128,7 +159,7 @@ cd app && pnpm install
 cd ../anchor && yarn install
 ```
 
-### 2. Setup Environment
+### 4. Setup Environment
 
 ```bash
 # Copy environment template
@@ -140,7 +171,7 @@ cp .env.example .env.local
 # - DATABASE_URL (PostgreSQL connection string)
 ```
 
-### 3. Build Anchor Program
+### 5. Build Anchor Program
 
 ```bash
 cd anchor
@@ -150,7 +181,7 @@ anchor deploy --provider.cluster devnet
 # Copy the program ID and update .env.local
 ```
 
-### 4. Run Development Server
+### 6. Run Development Server
 
 ```bash
 cd ../app
