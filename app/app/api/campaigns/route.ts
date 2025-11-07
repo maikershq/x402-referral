@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function GET(request: NextRequest) {
   try {
     // TODO: Query campaigns from database or on-chain
-    const campaigns = [];
+    const campaigns: Array<unknown> = [];
 
     return NextResponse.json({ campaigns });
   } catch (error) {
