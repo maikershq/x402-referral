@@ -2,18 +2,12 @@
 
 import { useWallet } from '@solana/wallet-adapter-react';
 import { NavBar } from '@/components/NavBar';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { CreateCampaignModal } from '@/components/CreateCampaignModal';
+import { useState } from 'react';
 
 export default function MerchantDashboard() {
   const { connected, publicKey } = useWallet();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!connected) {
-      // Optionally redirect or show message
-    }
-  }, [connected]);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -55,7 +49,10 @@ export default function MerchantDashboard() {
             <div className="bg-white rounded-lg shadow">
               <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
                 <h2 className="text-xl font-semibold text-gray-900">Your Campaigns</h2>
-                <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                <button
+                  onClick={() => setIsCreateModalOpen(true)}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                >
                   Create Campaign
                 </button>
               </div>
@@ -68,6 +65,14 @@ export default function MerchantDashboard() {
           </div>
         )}
       </main>
+
+      <CreateCampaignModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+        onSuccess={() => {
+          // Refresh campaigns list
+        }}
+      />
     </div>
   );
 }
