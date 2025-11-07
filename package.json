@@ -1,0 +1,26 @@
+{
+  "name": "x402-referral",
+  "version": "0.1.0",
+  "private": true,
+  "description": "X402-powered referral engine with Solana and agent economy integration",
+  "scripts": {
+    "dev": "pnpm --filter app dev",
+    "build": "pnpm --filter app build",
+    "start": "pnpm --filter app start",
+    "anchor:build": "cd anchor && anchor build",
+    "anchor:test": "cd anchor && anchor test",
+    "anchor:deploy": "cd anchor && anchor deploy"
+  },
+  "keywords": [
+    "solana",
+    "x402",
+    "referral",
+    "agent-economy"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
+
