@@ -1,16 +1,20 @@
 {
-  "name": "x402-template",
-  "version": "0.1.0",
+  "name": "x402-referral-engine",
+  "version": "1.0.0",
   "private": true,
-  "displayName": "X402 Next.js",
-  "description": "Next.js Solana starter with X402 payment protocol integration",
-  "usecase": "Payments",
+  "displayName": "X402 Referral Engine",
+  "description": "Open-source referral platform powered by x402 protocol and Solana blockchain",
+  "usecase": "Referral Marketing, Agent Economy, Payments",
   "keywords": [
     "solana",
     "nextjs",
     "x402",
-    "template",
-    "starter"
+    "referral",
+    "affiliate",
+    "agent-economy",
+    "blockchain",
+    "instant-payments",
+    "usdc"
   ],
   "create-solana-dapp": {
     "instructions": [
