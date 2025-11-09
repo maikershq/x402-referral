@@ -9,7 +9,7 @@ describe("referral_registry", () => {
   anchor.setProvider(provider);
 
   const program = anchor.workspace.referralRegistry as Program<ReferralRegistry>;
-  const merchant = provider.wallet;
+  const business = provider.wallet;
 
   it("Creates a campaign", async () => {
     const campaignName = "Test Campaign";
@@ -21,7 +21,7 @@ describe("referral_registry", () => {
     const [campaignPda] = PublicKey.findProgramAddressSync(
       [
         Buffer.from("campaign"),
-        merchant.publicKey.toBuffer(),
+        business.publicKey.toBuffer(),
         Buffer.from(campaignName),
       ],
       program.programId
@@ -37,7 +37,7 @@ describe("referral_registry", () => {
       )
       .accounts({
         campaign: campaignPda,
-        merchant: merchant.publicKey,
+        business: business.publicKey,
         systemProgram: anchor.web3.SystemProgram.programId,
       })
       .rpc();
@@ -47,7 +47,7 @@ describe("referral_registry", () => {
     const campaign = await program.account.campaign.fetch(campaignPda);
     
     assert.equal(campaign.name, campaignName);
-    assert.equal(campaign.merchant.toString(), merchant.publicKey.toString());
+    assert.equal(campaign.business.toString(), business.publicKey.toString());
     assert.equal(campaign.payoutAmount.toString(), payoutAmount.toString());
     assert.equal(campaign.maxPayouts.toString(), maxPayouts.toString());
     assert.equal(campaign.totalPayouts.toString(), "0");
@@ -58,7 +58,7 @@ describe("referral_registry", () => {
     const [campaignPda] = PublicKey.findProgramAddressSync(
       [
         Buffer.from("campaign"),
-        merchant.publicKey.toBuffer(),
+        business.publicKey.toBuffer(),
         Buffer.from(campaignName),
       ],
       program.programId
@@ -73,7 +73,7 @@ describe("referral_registry", () => {
       .logProof(conversionId, affiliate, amount, proofHash)
       .accounts({
         campaign: campaignPda,
-        authority: merchant.publicKey,
+        authority: business.publicKey,
       })
       .rpc();
 
@@ -88,7 +88,7 @@ describe("referral_registry", () => {
     const [campaignPda] = PublicKey.findProgramAddressSync(
       [
         Buffer.from("campaign"),
-        merchant.publicKey.toBuffer(),
+        business.publicKey.toBuffer(),
         Buffer.from(campaignName),
       ],
       program.programId
@@ -99,7 +99,7 @@ describe("referral_registry", () => {
       .pauseCampaign()
       .accounts({
         campaign: campaignPda,
-        merchant: merchant.publicKey,
+        business: business.publicKey,
       })
       .rpc();
 
@@ -111,7 +111,7 @@ describe("referral_registry", () => {
       .resumeCampaign()
       .accounts({
         campaign: campaignPda,
-        merchant: merchant.publicKey,
+        business: business.publicKey,
       })
       .rpc();
 

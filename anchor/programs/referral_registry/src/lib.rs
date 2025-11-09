@@ -19,7 +19,7 @@ pub mod referral_registry {
         require!(max_payouts > 0, ErrorCode::InvalidMaxPayouts);
 
         let campaign = &mut ctx.accounts.campaign;
-        campaign.merchant = ctx.accounts.merchant.key();
+        campaign.business = ctx.accounts.business.key();
         campaign.name = name;
         campaign.payout_amount = payout_amount;
         campaign.max_payouts = max_payouts;
@@ -31,7 +31,7 @@ pub mod referral_registry {
 
         emit!(CampaignCreated {
             campaign: campaign.key(),
-            merchant: campaign.merchant,
+            business: campaign.business,
             name: campaign.name.clone(),
             payout_amount,
             max_payouts,
@@ -102,15 +102,15 @@ pub mod referral_registry {
 pub struct CreateCampaign<'info> {
     #[account(
         init,
-        payer = merchant,
+        payer = business,
         space = 8 + Campaign::INIT_SPACE,
-        seeds = [b"campaign", merchant.key().as_ref(), name.as_bytes()],
+        seeds = [b"campaign", business.key().as_ref(), name.as_bytes()],
         bump
     )]
     pub campaign: Account<'info, Campaign>,
     
     #[account(mut)]
-    pub merchant: Signer<'info>,
+    pub business: Signer<'info>,
     
     pub system_program: Program<'info, System>,
 }
@@ -127,17 +127,17 @@ pub struct LogProof<'info> {
 pub struct UpdateCampaign<'info> {
     #[account(
         mut,
-        has_one = merchant @ ErrorCode::Unauthorized
+        has_one = business @ ErrorCode::Unauthorized
     )]
     pub campaign: Account<'info, Campaign>,
     
-    pub merchant: Signer<'info>,
+    pub business: Signer<'info>,
 }
 
 #[account]
 #[derive(InitSpace)]
 pub struct Campaign {
-    pub merchant: Pubkey,
+    pub business: Pubkey,
     #[max_len(64)]
     pub name: String,
     pub payout_amount: u64,
@@ -159,7 +159,7 @@ pub enum CampaignStatus {
 #[event]
 pub struct CampaignCreated {
     pub campaign: Pubkey,
-    pub merchant: Pubkey,
+    pub business: Pubkey,
     pub name: String,
     pub payout_amount: u64,
     pub max_payouts: u64,
@@ -195,6 +195,6 @@ pub enum ErrorCode {
     MaxPayoutsReached,
     #[msg("Payout counter overflow")]
     PayoutOverflow,
-    #[msg("Unauthorized: only campaign merchant can perform this action")]
+    #[msg("Unauthorized: only campaign business can perform this action")]
     Unauthorized,
 }
