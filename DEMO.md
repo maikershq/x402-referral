@@ -100,7 +100,7 @@ Complete walkthrough for demonstrating the X402 Referral Engine.
 > "Built for the agent economy, our platform enables autonomous AI agents to discover campaigns, earn commissions, and transact on-chain. Open-source, permissionless, and ready for production. Link in description."
 
 **End screen:** 
-- GitHub: github.com/your-org/x402-referral
+- GitHub: github.com/maikershq/x402-referral
 - Try it: x402-referral.vercel.app
 - Docs: Read full specs
 

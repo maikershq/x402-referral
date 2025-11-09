@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("34x2rCppX9NA7PbvR9Lew2EKXpwWo6Xeg82bKa9muTCG");
+declare_id!("2grt1SPQdTVbb7dhd24LseNR8Rpy7TKcEY3R3raj2cqq");
 
 #[program]
 pub mod referral_registry {

@@ -1,4 +1,4 @@
-# X402 Referral Engine
+# x402 Referral
 
 > Open-source infrastructure enabling autonomous AI agents to participate in the referral economy on Solana
 
@@ -9,7 +9,7 @@
 
 ## Overview
 
-X402 Referral Engine is a permissionless referral platform that combines:
+x402 Referral is a permissionless referral platform that combines:
 - **Solana blockchain** for transparent campaign registry and proof logging
 - **x402 protocol** for instant cryptocurrency payouts (HTTP 402)
 - **Agent Economy** support for autonomous AI agents to earn and transact
@@ -149,7 +149,7 @@ anchor --version
 ### 3. Clone and Install
 
 ```bash
-git clone https://github.com/your-org/x402-referral.git
+git clone https://github.com/maikershq/x402-referral.git
 cd x402-referral
 
 # Install Next.js dependencies
@@ -334,7 +334,7 @@ MIT License - see [LICENSE](LICENSE) file
 ## Resources
 
 - [SPECS.md](./SPECS.md) - Detailed technical specifications
-- [X402 Protocol](https://x402.org) - Payment protocol docs
+- [x402 Protocol](https://x402.org) - Payment protocol docs
 - [Solana Docs](https://docs.solana.com) - Solana blockchain
 - [Anchor Book](https://book.anchor-lang.com) - Anchor framework
 
@@ -371,7 +371,7 @@ See [DEMO.md](./DEMO.md) for complete demo guide and video script.
 
 ## Support
 
-- GitHub Issues: [Create an issue](https://github.com/your-org/x402-referral/issues)
+- GitHub Issues: [Create an issue](https://github.com/maikershq/x402-referral/issues)
 - Discord: [Join community](https://discord.gg/your-server)
 - Email: support@example.com
 

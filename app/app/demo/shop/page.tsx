@@ -72,24 +72,24 @@ export default function DemoShop() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <NavBar />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="bg-blue-600 px-6 py-8 text-white text-center">
+          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-blue-600 dark:bg-blue-500 px-6 py-8 text-white text-center">
               <h1 className="text-3xl font-bold mb-2">Demo Shop</h1>
-              <p className="text-blue-100">
+              <p className="text-blue-100 dark:text-blue-200">
                 Sign up now and get exclusive offers
               </p>
             </div>
 
             {referralInfo.affiliate && (
-              <div className="bg-green-50 border-l-4 border-green-400 p-4">
+              <div className="bg-green-50 dark:bg-green-950 border-l-4 border-green-400 dark:border-green-500 p-4">
                 <div className="flex">
                   <div className="flex-shrink-0">
                     <svg
-                      className="h-5 w-5 text-green-400"
+                      className="h-5 w-5 text-green-400 dark:text-green-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -101,7 +101,7 @@ export default function DemoShop() {
                     </svg>
                   </div>
                   <div className="ml-3">
-                    <p className="text-sm text-green-700">
+                    <p className="text-sm text-green-700 dark:text-green-300">
                       You arrived via a referral link! Complete signup to help your referrer
                       earn rewards.
                     </p>
@@ -115,7 +115,7 @@ export default function DemoShop() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
                     Email Address
                   </label>
@@ -124,7 +124,7 @@ export default function DemoShop() {
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="you@example.com"
                     required
                     disabled={isSubmitting}
@@ -134,20 +134,20 @@ export default function DemoShop() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="w-full px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {isSubmitting ? 'Signing up...' : 'Sign Up Now'}
                 </button>
               </form>
 
-              <div className="mt-8 pt-8 border-t border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
                   Features you'll love
                 </h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <svg
-                      className="h-6 w-6 text-green-500 mr-2"
+                      className="h-6 w-6 text-green-500 dark:text-green-400 mr-2"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -159,11 +159,11 @@ export default function DemoShop() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span className="text-gray-700">Instant access to premium features</span>
+                    <span className="text-gray-700 dark:text-gray-300">Instant access to premium features</span>
                   </li>
                   <li className="flex items-start">
                     <svg
-                      className="h-6 w-6 text-green-500 mr-2"
+                      className="h-6 w-6 text-green-500 dark:text-green-400 mr-2"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -175,11 +175,11 @@ export default function DemoShop() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span className="text-gray-700">24/7 customer support</span>
+                    <span className="text-gray-700 dark:text-gray-300">24/7 customer support</span>
                   </li>
                   <li className="flex items-start">
                     <svg
-                      className="h-6 w-6 text-green-500 mr-2"
+                      className="h-6 w-6 text-green-500 dark:text-green-400 mr-2"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -191,14 +191,14 @@ export default function DemoShop() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span className="text-gray-700">No credit card required</span>
+                    <span className="text-gray-700 dark:text-gray-300">No credit card required</span>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <p className="mt-4 text-center text-sm text-gray-600">
+          <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
             This is a demo shop for testing the referral system. No real signup occurs.
           </p>
         </div>

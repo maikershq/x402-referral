@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import '@solana/wallet-adapter-react-ui/styles.css'
 import { WalletProvider } from '@/providers/WalletProvider'
-import { Toaster } from 'sonner'
+import { ThemeProvider } from '@/providers/ThemeProvider'
+import { ThemedToaster } from '@/components/ThemedToaster'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,12 +27,28 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('theme') || 'system';
+                if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <WalletProvider>
-          {children}
-          <Toaster position="bottom-right" />
-        </WalletProvider>
+        <ThemeProvider>
+          <WalletProvider>
+            {children}
+            <ThemedToaster />
+          </WalletProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

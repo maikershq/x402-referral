@@ -105,7 +105,7 @@ import { NextRequest } from 'next/server'
 // Your Solana wallet address that receives payments
 const address = 'CmGgLQL36Y9ubtTsy2zmE46TAxwCBm66onZmPPhUWNqv' as Address
 const network = 'solana-devnet' as Network
-const facilitatorUrl = 'https://x402.org/facilitator' as Resource
+const facilitatorUrl = 'https://api.cdp.coinbase.com/platform/v2/x402' as Resource
 const cdpClientKey = '3uyu43EHCwgVIQx6a8cIfSkxp6cXgU30'
 
 const x402PaymentMiddleware = paymentMiddleware(
@@ -199,7 +199,7 @@ NEXT_PUBLIC_NETWORK=solana-devnet
 NEXT_PUBLIC_CDP_CLIENT_KEY=your_client_key_here
 
 # Facilitator URL (service that verifies payments)
-NEXT_PUBLIC_FACILITATOR_URL=https://x402.org/facilitator
+NEXT_PUBLIC_FACILITATOR_URL=https://api.cdp.coinbase.com/platform/v2/x402
 ```
 
 ### Customizing Routes and Prices

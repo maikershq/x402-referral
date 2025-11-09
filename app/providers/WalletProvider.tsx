@@ -12,8 +12,6 @@ import {
 } from '@solana/wallet-adapter-wallets';
 import { clusterApiUrl } from '@solana/web3.js';
 
-require('@solana/wallet-adapter-react-ui/styles.css');
-
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   const network = process.env.NEXT_PUBLIC_SOLANA_NETWORK || 'devnet';
   const endpoint = useMemo(

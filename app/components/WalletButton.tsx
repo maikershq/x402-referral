@@ -1,11 +1,10 @@
 'use client';
 
-import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 export function WalletButton() {
   return (
-    <WalletMultiButton className="!bg-blue-600 hover:!bg-blue-700 transition-colors" />
+    <WalletMultiButton className="!bg-blue-600 dark:!bg-blue-500 hover:!bg-blue-700 dark:hover:!bg-blue-600 transition-colors" />
   );
 }
 

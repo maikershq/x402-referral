@@ -20,7 +20,7 @@ Don't have them? See [INSTALL.md](./INSTALL.md) for setup.
 
 ```bash
 # Clone repo (if you haven't already)
-git clone https://github.com/your-org/x402-referral.git
+git clone https://github.com/maikershq/x402-referral.git
 cd x402-referral
 
 # Install Next.js dependencies

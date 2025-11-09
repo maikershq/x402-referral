@@ -9,11 +9,14 @@ skip-lint = false
 [programs.localnet]
 referral_registry = "34x2rCppX9NA7PbvR9Lew2EKXpwWo6Xeg82bKa9muTCG"
 
+[programs.devnet]
+referral_registry = "2grt1SPQdTVbb7dhd24LseNR8Rpy7TKcEY3R3raj2cqq"
+
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
