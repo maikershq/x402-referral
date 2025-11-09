@@ -41,13 +41,13 @@ Open [http://localhost:3000](http://localhost:3000) 🎉
 
 **Without wallet** (UI only):
 - Browse landing page
-- Visit `/merchant/dashboard`
+- Visit `/business/dashboard`
 - Visit `/affiliate/dashboard`  
 - Visit `/demo/shop`
 
 **With wallet** (full functionality):
 1. Connect Phantom wallet
-2. Go to `/merchant/dashboard` → Create Campaign
+2. Go to `/business/dashboard` → Create Campaign
 3. Go to `/affiliate/dashboard` → Generate Link
 4. Click link → Complete signup on demo shop
 5. See conversion tracked!
@@ -127,9 +127,9 @@ Now campaigns will actually be created on Solana! 🚀
 
 ### Scenario: Holiday Sale Campaign
 
-**As Merchant:**
+**As Business:**
 ```bash
-1. Open http://localhost:3000/merchant/dashboard
+1. Open http://localhost:3000/business/dashboard
 2. Click "Connect Wallet" (Phantom)
 3. Click "Create Campaign"
 4. Fill:
@@ -162,7 +162,7 @@ Now campaigns will actually be created on Solana! 🚀
 
 **Check Results:**
 - Affiliate dashboard shows +$5.00 earnings
-- Merchant dashboard shows conversion tracked
+- Business dashboard shows conversion tracked
 - Console logs show fraud check passed
 
 ---
@@ -252,7 +252,7 @@ anchor deploy --provider.cluster mainnet-beta
 ## 💡 Pro Tips
 
 1. **Use devnet for demos** - Free SOL, fast iterations
-2. **Multiple wallets** - Use different wallets for merchant vs affiliate
+2. **Multiple wallets** - Use different wallets for business vs affiliate
 3. **Incognito windows** - Simulate different users
 4. **Check console** - Logs show fraud detection and webhook processing
 5. **Keep it simple** - Demo the core flow, don't overcomplicate

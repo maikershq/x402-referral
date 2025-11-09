@@ -30,7 +30,7 @@ Current status of the X402 Referral Engine implementation.
 - [x] Responsive layout with Tailwind CSS
 
 ### 4. Dashboard Pages
-- [x] Merchant dashboard (`/merchant/dashboard`)
+- [x] Business dashboard (`/business/dashboard`)
   - Wallet-gated access
   - Campaign stats overview
   - Empty state with CTAs
@@ -70,7 +70,7 @@ Current status of the X402 Referral Engine implementation.
 - [x] Referral link generator with QR codes
 - [x] Copy-to-clipboard functionality
 - [x] Referral link handler with session tracking
-- [x] Demo merchant shop page
+- [x] Demo business shop page
 
 ### Backend Services
 - [x] Webhook receiver for conversion tracking
@@ -90,7 +90,7 @@ Current status of the X402 Referral Engine implementation.
 ## 📋 TODO (Phase 3)
 
 ### Demo & Testing
-- [ ] Demo merchant shop with conversion tracking
+- [ ] Demo business shop with conversion tracking
 - [ ] Demo affiliate invoice endpoint
 - [ ] End-to-end flow testing
 - [ ] Record 3-minute demo video

@@ -31,7 +31,7 @@
 - ✅ **Script:** Complete 3-minute script in [DEMO.md](./DEMO.md)
 - ✅ **Sections:**
   - 0:00-0:30 - Problem & Solution
-  - 0:30-1:00 - Merchant creates campaign
+  - 0:30-1:00 - Business creates campaign
   - 1:00-1:30 - Affiliate generates link
   - 1:30-2:15 - Conversion & automated payout
   - 2:15-2:45 - On-chain proof verification
@@ -148,7 +148,7 @@ Pay USDC → Store Receipt
 - ✅ Referral link generation
 - ✅ QR code support
 - ✅ Real-time dashboards
-- ✅ Demo merchant shop
+- ✅ Demo business shop
 
 ---
 
@@ -196,7 +196,7 @@ x402-referral/
 │       └── referral_registry/ # Campaign registry + proof logging
 ├── app/                       # Next.js app
 │   ├── app/
-│   │   ├── merchant/          # Merchant dashboard
+│   │   ├── business/          # Business dashboard
 │   │   ├── affiliate/         # Affiliate dashboard
 │   │   ├── demo/shop/         # Demo conversion page
 │   │   └── api/               # Webhooks, campaigns, payouts
@@ -221,7 +221,7 @@ See [QUICKSTART.md](./QUICKSTART.md) for 5-minute setup or [DEMO.md](./DEMO.md) 
 ```bash
 cd app && pnpm dev
 # Visit http://localhost:3000
-# Try: Merchant Dashboard → Affiliate Dashboard → Demo Shop
+# Try: Business Dashboard → Affiliate Dashboard → Demo Shop
 ```
 
 ---

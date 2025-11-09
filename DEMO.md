@@ -16,10 +16,10 @@ Complete walkthrough for demonstrating the X402 Referral Engine.
 
 ---
 
-###  **[0:30-1:00] Create Campaign (Merchant)**
+###  **[0:30-1:00] Create Campaign (Business)**
 
 **Actions:**
-1. Show merchant dashboard
+1. Show business dashboard
 2. Click "Connect Wallet" → Phantom pops up
 3. Click "Create Campaign"
 4. Fill form:
@@ -30,7 +30,7 @@ Complete walkthrough for demonstrating the X402 Referral Engine.
 5. Click "Create" → Sign transaction
 
 **Narration:**
-> "Merchants create campaigns on-chain in seconds. Every campaign is stored on Solana for full transparency. The blockchain guarantees immutability and trust."
+> "Businesss create campaigns on-chain in seconds. Every campaign is stored on Solana for full transparency. The blockchain guarantees immutability and trust."
 
 **Visual:** Show transaction confirmation toast with Solscan link
 
@@ -118,22 +118,22 @@ cd app && pnpm dev
 ```
 
 2. **Open Multiple Browser Windows:**
-- Window 1: Merchant Dashboard
+- Window 1: Business Dashboard
 - Window 2: Affiliate Dashboard  
 - Window 3: Demo Shop
 - Window 4: Console logs
 
 3. **Prepare Wallets:**
-- Wallet A: Merchant (create campaign)
+- Wallet A: Business (create campaign)
 - Wallet B: Affiliate (generate links)
 
 ---
 
 ### Step-by-Step Demo
 
-#### **Part 1: Merchant Creates Campaign (2 minutes)**
+#### **Part 1: Business Creates Campaign (2 minutes)**
 
-1. Navigate to `/merchant/dashboard`
+1. Navigate to `/business/dashboard`
 2. Click "Connect Wallet" → Select Phantom → Approve
 3. Point out: "Wallet connected, ready to create campaign"
 4. Click "Create Campaign" button
@@ -285,7 +285,7 @@ Before demoing on mainnet:
 - [ ] Deploy Anchor program to mainnet
 - [ ] Deploy frontend to Vercel
 - [ ] Configure Coinbase CDP for mainnet
-- [ ] Fund merchant wallet with SOL + USDC
+- [ ] Fund business wallet with SOL + USDC
 - [ ] Test end-to-end flow with real payments
 - [ ] Set up monitoring/logging
 - [ ] Prepare fallback plan if demo fails

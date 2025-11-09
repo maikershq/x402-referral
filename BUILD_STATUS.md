@@ -51,7 +51,7 @@ pnpm build
 **Routes Built:**
 - ✅ `/` - Landing page (Static)
 - ✅ `/affiliate/dashboard` - Affiliate dashboard (Static)
-- ✅ `/merchant/dashboard` - Merchant dashboard (Static)
+- ✅ `/business/dashboard` - Business dashboard (Static)
 - ✅ `/api/campaigns` - Campaign API (Dynamic)
 - ✅ `/api/payouts/process` - Payout API (Dynamic)
 - ✅ `/api/webhooks/conversion` - Webhook API (Dynamic)

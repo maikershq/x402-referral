@@ -135,7 +135,7 @@ POST /api/webhooks/conversion
 | Page | URL | Status |
 |------|-----|--------|
 | Landing | `/` | ✅ PASS |
-| Merchant Dashboard | `/merchant/dashboard` | ✅ PASS |
+| Business Dashboard | `/business/dashboard` | ✅ PASS |
 | Affiliate Dashboard | `/affiliate/dashboard` | ✅ PASS |
 | Demo Shop | `/demo/shop` | ✅ PASS |
 | Referral Handler | `/r/[campaign]/[affiliate]` | ✅ PASS |
@@ -312,7 +312,7 @@ Before hackathon demo, manually verify:
 
 ### Scenario 1: Happy Path ✅
 ```
-Merchant creates campaign → Affiliate generates link →
+Business creates campaign → Affiliate generates link →
 User clicks & converts → Fraud check passes →
 Payout processed
 ```

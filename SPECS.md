@@ -3,11 +3,11 @@
 ## Architecture (MVP → prod)
 
 ### Campaign Registry (Solana program)
-- Stores: campaign_id, merchant pubkey, pricing (payout_per_action), caps, start/end, affiliate allowlist (optional)
+- Stores: campaign_id, business pubkey, pricing (payout_per_action), caps, start/end, affiliate allowlist (optional)
 - Writes immutable event hashes for audit: keccak(conv_id | affiliate | timestamp | amount)
 
 ### Tracking + Verifier (server)
-- Webhooks from merchant apps (signup, purchase, etc.)
+- Webhooks from business apps (signup, purchase, etc.)
 - Dedupe, cooldowns, fingerprinting, IP/ASN heuristics, captcha score, bot lists
 - Produces a signed "conversion proof" → posts hash on-chain
 
@@ -16,7 +16,7 @@
 - Fallback: custodial payout to affiliate's USDC address if they don't host x402
 
 ### SDKs
-- Merchant SDK: track('signup'|'purchase', meta) + webhook template
+- Business SDK: track('signup'|'purchase', meta) + webhook template
 - Affiliate SDK: one-liner to spin up an /invoice x402 endpoint (Node/Rust)
 
 ### Referral Links
@@ -38,7 +38,7 @@
 - **Framework support**: SDKs/plugins for elizaOS, LangChain, AutoGPT, Agent Protocol
 - **No custody hassle**: Each agent hosts `/invoice` endpoint → receives payments directly
 
-### AI Agents as Merchants
+### AI Agents as Businesses
 - Agent-operated services create campaigns to drive adoption
 - Agent-to-agent referral networks (e.g., data labeling agent refers to training platform)
 - Programmatic campaign management via on-chain calls
@@ -57,9 +57,9 @@
 ## Flow
 
 ### Human-Driven
-1. Merchant creates campaign → Solana registry entry
+1. Business creates campaign → Solana registry entry
 2. Affiliate gets referral URL
-3. User converts → merchant webhook → Verifier checks → posts proof hash on-chain
+3. User converts → business webhook → Verifier checks → posts proof hash on-chain
 4. Payout Service requests affiliate /invoice → pays via x402 → records receipt → marks paid
 5. Dashboard shows proof↔receipt linkage
 
@@ -109,7 +109,7 @@
 
 #### Pages & Features
 
-**Merchant Dashboard** (`/merchant`)
+**Business Dashboard** (`/business`)
 - Connect wallet (authority check)
 - Create campaign form (budget, payout amount, caps, duration)
 - Campaign list with status (active/paused/ended)
@@ -130,7 +130,7 @@
 - Landing page with demo video embed
 - Campaign discovery (no wallet required)
 - Referral link handler (`/r/[campaign]/[affiliate]`)
-- Demo merchant shop (signup/purchase flows)
+- Demo business shop (signup/purchase flows)
 
 #### State Management
 - Wallet context (connected wallet, balance, network)
@@ -163,7 +163,7 @@ const { connection } = useConnection();
 5. Poll confirmation status → update UI on success
 
 **Auth Pattern**
-- Merchant creates campaign: verify `publicKey` matches on-chain authority
+- Business creates campaign: verify `publicKey` matches on-chain authority
 - Sign message for API auth: `signMessage(nonce)` → verify on server
 - Session management: store wallet signature + timestamp in JWT
 
@@ -194,7 +194,7 @@ const { connection } = useConnection();
 
 #### 1. Anchor Program (`programs/referral-registry`)
 - Campaign registry account structure
-- `create_campaign` instruction (merchant only)
+- `create_campaign` instruction (business only)
 - `log_proof` instruction (verifier authority)
 - Event emissions for indexing
 
@@ -230,18 +230,18 @@ const { connection } = useConnection();
 
 **Pages to Build**
 - `/` - Landing page (public)
-- `/merchant/dashboard` - Create campaigns, view analytics (wallet required)
+- `/business/dashboard` - Create campaigns, view analytics (wallet required)
 - `/affiliate/dashboard` - Browse campaigns, track earnings (wallet required)
 - `/r/[campaign]/[affiliate]` - Referral link handler
 - `/demo/shop` - Mock e-commerce for testing conversions
 
 #### 4. SDKs (`packages/`)
-- `@x402-referral/merchant-sdk` - Track events, generate webhooks
+- `@x402-referral/business-sdk` - Track events, generate webhooks
 - `@x402-referral/affiliate-sdk` - Spin up x402 invoice endpoint (Node/Deno)
 - `@x402-referral/link-utils` - Generate signed referral links with JWT
 
 #### 5. Demo & Documentation
-- Demo merchant shop (Next.js with webhook integration)
+- Demo business shop (Next.js with webhook integration)
 - Demo affiliate endpoint (simple Express server with x402)
 - Video recording setup (OBS, screen capture, voiceover)
 - Documentation site or comprehensive README
@@ -261,7 +261,7 @@ const { connection } = useConnection();
 #### 3. Demo Video (≤3 minutes)
 **Script outline:**
 - 0:00-0:30 - Problem: slow, opaque affiliate payouts
-- 0:30-1:00 - Solution: merchant creates campaign → shows on-chain registry
+- 0:30-1:00 - Solution: business creates campaign → shows on-chain registry
 - 1:00-1:30 - Affiliate shares referral link → user converts
 - 1:30-2:15 - Automated flow: webhook → fraud check → x402 payment (show dashboard)
 - 2:15-2:45 - Show on-chain proof + x402 receipt matching
@@ -279,8 +279,8 @@ const { connection } = useConnection();
 
 **Full Walkthrough with Wallet Integration:**
 
-1. **Merchant Setup**
-   - Visit `/merchant/dashboard`
+1. **Business Setup**
+   - Visit `/business/dashboard`
    - Click "Connect Wallet" → Phantom modal appears
    - Approve connection → wallet address displayed in header
    - Click "Create Campaign"
@@ -291,7 +291,7 @@ const { connection } = useConnection();
 
 2. **Affiliate Onboarding**
    - Visit `/affiliate/dashboard`
-   - Connect wallet (different wallet than merchant)
+   - Connect wallet (different wallet than business)
    - Browse campaigns → see "Demo Shop Signups"
    - Click "Generate Referral Link"
    - Copy referral link: `https://app.com/r/demo-shop/AFFpubkey...?sig=...`
@@ -316,7 +316,7 @@ const { connection } = useConnection();
    - Shows new conversion: +$5 pending → paid
    - Click proof link → opens Solscan showing on-chain hash
    - Click payment link → shows x402 receipt
-   - Merchant dashboard shows: -$5 payout, conversion metrics updated
+   - Business dashboard shows: -$5 payout, conversion metrics updated
 
 ## Success metrics
 

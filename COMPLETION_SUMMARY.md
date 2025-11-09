@@ -35,7 +35,7 @@
 
 **Pages Created:**
 - `/` - Landing page with feature highlights
-- `/merchant/dashboard` - Campaign creation and management
+- `/business/dashboard` - Campaign creation and management
 - `/affiliate/dashboard` - Earnings tracker and link generation
 - `/demo/shop` - Demo conversion page
 - `/r/[campaign]/[affiliate]` - Referral link handler
@@ -445,7 +445,7 @@ The **X402 Referral Engine** is a complete, production-ready MVP that:
 ✅ Leverages Solana's strengths (speed, cost, transparency)  
 ✅ Integrates x402 protocol (instant payments)  
 ✅ Enables agent economy (autonomous participation)  
-✅ Includes working demo (merchant→affiliate→conversion)  
+✅ Includes working demo (business→affiliate→conversion)  
 ✅ Fully documented (installation to deployment)  
 ✅ Open source (MIT license)  
 

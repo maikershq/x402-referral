@@ -111,7 +111,7 @@
 ```typescript
 ✅ Pages (11 routes)
    / - Landing page with modern design
-   /merchant/dashboard - Campaign management
+   /business/dashboard - Campaign management
    /affiliate/dashboard - Earnings tracker
    /demo/shop - Conversion simulation
    /r/[campaign]/[affiliate] - Link handler
@@ -204,7 +204,7 @@ x402-referral/                      ← Root (10 commits, 5557 lines)
 │   ├── app/
 │   │   ├── page.tsx               ← Landing page (220 lines)
 │   │   ├── layout.tsx             ← Root layout with providers
-│   │   ├── merchant/dashboard/    ← Campaign creation
+│   │   ├── business/dashboard/    ← Campaign creation
 │   │   ├── affiliate/dashboard/   ← Link generation
 │   │   ├── demo/shop/             ← Conversion simulation
 │   │   ├── r/[campaign]/[affiliate]/ ← Link handler
@@ -240,7 +240,7 @@ pnpm dev
 
 **Try:**
 1. Landing page → Click "Try Demo"
-2. Merchant Dashboard → Connect wallet → Create campaign
+2. Business Dashboard → Connect wallet → Create campaign
 3. Affiliate Dashboard → Connect wallet → Generate link
 4. Click link → Complete signup
 5. See conversion tracked with fraud detection!
@@ -487,7 +487,7 @@ cd ../app && pnpm dev
 - Key metrics displayed
 - CTA buttons to dashboards
 
-### Merchant Dashboard
+### Business Dashboard
 - Wallet connection required
 - Campaign creation modal
 - Stats overview (campaigns, conversions, payouts)

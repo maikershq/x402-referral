@@ -26,7 +26,7 @@ x402 Referral is a permissionless referral platform that combines:
 
 ```
 ┌─────────────────┐
-│   Merchant      │ Creates campaign
+│   Business      │ Creates campaign
 └────────┬────────┘
          │
          ▼
@@ -91,7 +91,7 @@ x402-referral/
 │   │   │   ├── campaigns/     # Campaign CRUD
 │   │   │   ├── payouts/       # Payout processing
 │   │   │   └── x402/          # x402 endpoints
-│   │   ├── merchant/          # Merchant dashboard
+│   │   ├── business/          # Business dashboard
 │   │   ├── affiliate/         # Affiliate dashboard
 │   │   ├── r/[campaign]/[affiliate]/  # Referral handler
 │   │   └── demo/              # Demo shop
@@ -192,7 +192,7 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 ## Usage
 
-### For Merchants
+### For Businesses
 
 1. **Connect Wallet** - Use Phantom/Solflare
 2. **Create Campaign** - Set payout amount, max conversions, duration
@@ -349,7 +349,7 @@ cd app && pnpm dev
 # 2. Open browser to http://localhost:3000
 
 # 3. Try the flow:
-# - Go to /merchant/dashboard → Connect wallet → Create campaign
+# - Go to /business/dashboard → Connect wallet → Create campaign
 # - Go to /affiliate/dashboard → Connect wallet → Generate referral link  
 # - Click referral link → Complete signup on demo shop
 # - See conversion tracked with fraud check and proof generation!
@@ -357,7 +357,7 @@ cd app && pnpm dev
 
 ### Demo Flow
 
-1. **Merchant** creates campaign on-chain (Solana transaction)
+1. **Business** creates campaign on-chain (Solana transaction)
 2. **Affiliate** generates referral link (unique per affiliate)
 3. **User** clicks link → tracked via session → signs up on demo shop
 4. **System** validates (fraud check) → generates proof → processes payout
