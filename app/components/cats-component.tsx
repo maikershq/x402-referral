@@ -51,7 +51,7 @@ export const CatsComponent = ({ contentType = 'expensive' }: { contentType?: 'ch
   return (
     <div className="flex flex-col items-center justify-center">
       <Image src={selectedCat.url} alt={selectedCat.caption} width={400} height={400} />
-      <p className="text-sm text-gray-600">{selectedCat.caption}</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400">{selectedCat.caption}</p>
     </div>
   )
 }

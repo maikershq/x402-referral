@@ -1,12 +1,13 @@
 'use client';
 
+import { PublicKey } from '@solana/web3.js';
 import { shortenAddress } from '@/lib/utils/referral-links';
 
 interface Campaign {
   publicKey: string;
   account: {
     name: string;
-    merchant: string;
+    business: string | PublicKey;
     payoutAmount: number;
     maxPayouts: number;
     totalPayouts: number;
@@ -44,7 +45,7 @@ export function CampaignCard({ campaign, onGenerateLink, showActions = true }: C
           <div>
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{account.name}</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-              by {shortenAddress(account.merchant)}
+              by {shortenAddress(account.business)}
             </p>
           </div>
           <span

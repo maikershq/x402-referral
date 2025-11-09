@@ -1,35 +1,23 @@
-import { Program, AnchorProvider, Idl, BN } from '@coral-xyz/anchor';
-import { Connection, PublicKey, Transaction, SystemProgram } from '@solana/web3.js';
+import { Program, AnchorProvider, BN } from '@coral-xyz/anchor';
+import { Connection, PublicKey, SystemProgram } from '@solana/web3.js';
 import { AnchorWallet } from '@solana/wallet-adapter-react';
-
-// This will be replaced with actual IDL after anchor build
-// To use: 
-// 1. Run `anchor build` in the anchor directory
-// 2. Copy anchor/target/idl/referral_registry.json to app/lib/solana/
-// 3. Import it and use: import idl from './referral_registry.json';
-export type ReferralRegistry = any;
+import type { ReferralRegistry } from './referral_registry';
+import idlJson from './referral_registry.json';
 
 export const PROGRAM_ID = new PublicKey(
-  process.env.NEXT_PUBLIC_PROGRAM_ID || '34x2rCppX9NA7PbvR9Lew2EKXpwWo6Xeg82bKa9muTCG'
+  process.env.NEXT_PUBLIC_PROGRAM_ID || '2grt1SPQdTVbb7dhd24LseNR8Rpy7TKcEY3R3raj2cqq'
 );
 
-export function getProgram(connection: Connection, wallet: AnchorWallet): any {
-  // Note: This function requires the actual IDL from anchor build
-  // For now, return a mock to prevent build errors
-  console.warn('Anchor program not initialized - run anchor build first');
-  return null;
-  
-  // Uncomment after anchor build:
-  // const provider = new AnchorProvider(connection, wallet, {
-  //   commitment: 'confirmed',
-  // });
-  // const idl = require('./referral_registry.json'); 
-  // return new Program(idl, provider);
+export function getProgram(connection: Connection, wallet: AnchorWallet): Program<ReferralRegistry> {
+  const provider = new AnchorProvider(connection, wallet, {
+    commitment: 'confirmed',
+  });
+  return new Program(idlJson as unknown as ReferralRegistry, provider);
 }
 
-export function getCampaignPDA(merchant: PublicKey, name: string) {
+export function getCampaignPDA(business: PublicKey, name: string) {
   return PublicKey.findProgramAddressSync(
-    [Buffer.from('campaign'), merchant.toBuffer(), Buffer.from(name)],
+    [Buffer.from('campaign'), business.toBuffer(), Buffer.from(name)],
     PROGRAM_ID
   );
 }
@@ -43,16 +31,10 @@ export interface CreateCampaignParams {
 }
 
 export async function createCampaign(
-  program: any,
+  program: Program<ReferralRegistry>,
   wallet: AnchorWallet,
   params: CreateCampaignParams
 ): Promise<string> {
-  if (!program) {
-    throw new Error('Program not initialized. Run anchor build and import IDL first.');
-  }
-  
-  const [campaignPda] = getCampaignPDA(wallet.publicKey, params.name);
-
   const tx = await program.methods
     .createCampaign(
       params.name,
@@ -62,9 +44,7 @@ export async function createCampaign(
       params.endTimestamp
     )
     .accounts({
-      campaign: campaignPda,
-      merchant: wallet.publicKey,
-      systemProgram: SystemProgram.programId,
+      business: wallet.publicKey,
     })
     .rpc();
 
@@ -72,10 +52,9 @@ export async function createCampaign(
 }
 
 export async function getCampaign(
-  program: any,
+  program: Program<ReferralRegistry>,
   campaignPda: PublicKey
 ) {
-  if (!program) return null;
   try {
     const campaign = await program.account.campaign.fetch(campaignPda);
     return campaign;
@@ -85,8 +64,7 @@ export async function getCampaign(
   }
 }
 
-export async function getAllCampaigns(program: any) {
-  if (!program) return [];
+export async function getAllCampaigns(program: Program<ReferralRegistry>) {
   try {
     const campaigns = await program.account.campaign.all();
     return campaigns;
@@ -97,17 +75,13 @@ export async function getAllCampaigns(program: any) {
 }
 
 export async function logProof(
-  program: any,
+  program: Program<ReferralRegistry>,
   campaignPda: PublicKey,
   conversionId: string,
   affiliate: PublicKey,
   amount: BN,
   proofHash: number[]
 ): Promise<string> {
-  if (!program) {
-    throw new Error('Program not initialized');
-  }
-  
   const tx = await program.methods
     .logProof(conversionId, affiliate, amount, proofHash)
     .accounts({
@@ -120,19 +94,14 @@ export async function logProof(
 }
 
 export async function pauseCampaign(
-  program: any,
+  program: Program<ReferralRegistry>,
   campaignPda: PublicKey,
-  merchant: PublicKey
+  business: PublicKey
 ): Promise<string> {
-  if (!program) {
-    throw new Error('Program not initialized');
-  }
-  
   const tx = await program.methods
     .pauseCampaign()
     .accounts({
       campaign: campaignPda,
-      merchant,
     })
     .rpc();
 
@@ -140,19 +109,14 @@ export async function pauseCampaign(
 }
 
 export async function resumeCampaign(
-  program: any,
+  program: Program<ReferralRegistry>,
   campaignPda: PublicKey,
-  merchant: PublicKey
+  business: PublicKey
 ): Promise<string> {
-  if (!program) {
-    throw new Error('Program not initialized');
-  }
-  
   const tx = await program.methods
     .resumeCampaign()
     .accounts({
       campaign: campaignPda,
-      merchant,
     })
     .rpc();
 

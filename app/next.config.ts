@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  turbopack: {
+    root: '/Users/chainsona/Code/src/github.com/MaikersHQ/x402-referral',
+  },
 }
 
 export default nextConfig

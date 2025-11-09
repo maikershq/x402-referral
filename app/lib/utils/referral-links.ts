@@ -15,8 +15,9 @@ export function generateReferralLink(params: ReferralLinkParams): string {
   return link;
 }
 
-export function shortenAddress(address: string, chars = 4): string {
-  return `${address.slice(0, chars)}...${address.slice(-chars)}`;
+export function shortenAddress(address: string | PublicKey, chars = 4): string {
+  const addressStr = typeof address === 'string' ? address : address.toBase58();
+  return `${addressStr.slice(0, chars)}...${addressStr.slice(-chars)}`;
 }
 
 export function copyToClipboard(text: string): Promise<void> {

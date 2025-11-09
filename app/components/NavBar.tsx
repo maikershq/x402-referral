@@ -20,14 +20,14 @@ export function NavBar() {
             </Link>
             <div className="ml-10 flex items-center space-x-4">
               <Link
-                href="/merchant/dashboard"
+                href="/business/dashboard"
                 className={`px-3 py-2 text-sm font-medium rounded-md ${
-                  isActive('/merchant')
+                  isActive('/business')
                     ? 'bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400'
                     : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900'
                 }`}
               >
-                Merchant
+                Business
               </Link>
               <Link
                 href="/affiliate/dashboard"

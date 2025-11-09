@@ -13,10 +13,10 @@ export default function Home() {
             </Link>
             <div className="flex gap-4">
               <Link
-                href="/merchant/dashboard"
+                href="/business/dashboard"
                 className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-md transition-colors"
               >
-                Merchant
+                Business
               </Link>
               <Link
                 href="/affiliate/dashboard"
@@ -59,7 +59,7 @@ export default function Home() {
 
             <div className="mt-12 flex items-center justify-center gap-6">
               <Link
-                href="/merchant/dashboard"
+                href="/business/dashboard"
                 className="rounded-lg bg-blue-600 dark:bg-blue-500 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-blue-500 dark:hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all"
               >
                 Launch Dashboard
@@ -118,7 +118,7 @@ export default function Home() {
                 <div className="text-blue-400 font-bold mb-2">Step 1</div>
                 <h4 className="text-white font-semibold mb-2">Create Campaign</h4>
                 <p className="text-gray-400 dark:text-gray-300 text-sm">
-                  Merchants create campaigns stored on Solana blockchain
+                  Businesses create campaigns stored on Solana blockchain
                 </p>
               </div>
 
@@ -149,7 +149,7 @@ export default function Home() {
 
             <div className="mt-8">
               <Link
-                href="/merchant/dashboard"
+                href="/business/dashboard"
                 className="inline-block px-8 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               >
                 Get Started
