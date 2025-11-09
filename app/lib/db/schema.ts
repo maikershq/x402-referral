@@ -1,9 +1,6 @@
-// Database schema types
-// TODO: Setup Knex migrations or Prisma schema
-
 export interface Campaign {
   id: string;
-  merchant_pubkey: string;
+  business_pubkey: string;
   name: string;
   payout_amount: number;
   max_payouts: number;
