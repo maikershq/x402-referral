@@ -155,7 +155,7 @@ Now campaigns will actually be created on Solana! 🚀
 ```bash
 1. Click the referral link
 2. See "Referral detected!" message
-3. Enter email: test@example.com
+3. Enter email: test@maikers.com
 4. Click "Sign Up Now"
 5. See success messages! 🎉
 ```

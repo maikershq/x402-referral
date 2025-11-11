@@ -325,7 +325,7 @@ Contributions welcome! Please open an issue or PR.
 
 - Smart contracts audited: ❌ (TODO)
 - Bug bounty program: ❌ (TODO)
-- Report vulnerabilities: security@example.com
+- Report vulnerabilities: security@maikers.com
 
 ## License
 
@@ -372,8 +372,8 @@ See [DEMO.md](./DEMO.md) for complete demo guide and video script.
 ## Support
 
 - GitHub Issues: [Create an issue](https://github.com/maikershq/x402-referral/issues)
-- Discord: [Join community](https://discord.gg/your-server)
-- Email: support@example.com
+- Discord: [Join community](https://discord.gg/maikers)
+- Email: support@maikers.com
 
 ---
 

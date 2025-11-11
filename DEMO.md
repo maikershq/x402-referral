@@ -57,7 +57,7 @@ Complete walkthrough for demonstrating the X402 Referral Engine.
 **Actions:**
 1. Click referral link → redirects to demo shop
 2. Show "Referral detected" banner
-3. Fill email: demo@example.com
+3. Fill email: demo@maikers.com
 4. Click "Sign Up"
 5. Show success toasts
 6. Split screen showing:
@@ -172,7 +172,7 @@ cd app && pnpm dev
 2. Paste the referral link
 3. Point out: URL redirects to `/demo/shop`
 4. Show **green banner**: "Referral link detected!"
-5. Fill email field: `demo@example.com`
+5. Fill email field: `demo@maikers.com`
 6. Click "Sign Up Now"
 7. **Watch toasts appear:**
    - "🎉 Signup successful!"

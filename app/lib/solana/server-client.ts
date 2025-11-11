@@ -1,5 +1,5 @@
-import { Program, AnchorProvider, BN, Wallet } from '@coral-xyz/anchor';
-import { Connection, PublicKey, Keypair } from '@solana/web3.js';
+import { Program, AnchorProvider, BN } from '@coral-xyz/anchor';
+import { Connection, PublicKey, Keypair, Transaction, VersionedTransaction } from '@solana/web3.js';
 import type { ReferralRegistry } from './referral_registry';
 import idlJson from './referral_registry.json';
 import bs58 from 'bs58';
@@ -7,6 +7,30 @@ import bs58 from 'bs58';
 export const PROGRAM_ID = new PublicKey(
   process.env.NEXT_PUBLIC_PROGRAM_ID || '2grt1SPQdTVbb7dhd24LseNR8Rpy7TKcEY3R3raj2cqq'
 );
+
+class NodeWallet {
+  constructor(readonly payer: Keypair) {}
+
+  async signTransaction<T extends Transaction | VersionedTransaction>(tx: T): Promise<T> {
+    if (tx instanceof Transaction) {
+      tx.partialSign(this.payer);
+    }
+    return tx;
+  }
+
+  async signAllTransactions<T extends Transaction | VersionedTransaction>(txs: T[]): Promise<T[]> {
+    return txs.map((tx) => {
+      if (tx instanceof Transaction) {
+        tx.partialSign(this.payer);
+      }
+      return tx;
+    });
+  }
+
+  get publicKey(): PublicKey {
+    return this.payer.publicKey;
+  }
+}
 
 export function getServerProgram(): Program<ReferralRegistry> {
   const connection = new Connection(
@@ -18,8 +42,8 @@ export function getServerProgram(): Program<ReferralRegistry> {
     bs58.decode(process.env.SOLANA_AUTHORITY_PRIVATE_KEY || '')
   );
 
-  const wallet = new Wallet(authorityKeyPair);
-  const provider = new AnchorProvider(connection, wallet, {
+  const wallet = new NodeWallet(authorityKeyPair);
+  const provider = new AnchorProvider(connection, wallet as any, {
     commitment: 'confirmed',
   });
 

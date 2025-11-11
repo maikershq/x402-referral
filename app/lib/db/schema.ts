@@ -55,6 +55,7 @@ export interface Payout {
   status: 'pending' | 'processing' | 'paid' | 'failed';
   payment_tx?: string;
   invoice_id?: string;
+  created_at: Date;
   paid_at?: Date;
 }
 

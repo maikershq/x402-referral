@@ -125,7 +125,7 @@ export default function DemoShop() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="you@example.com"
+                    placeholder="you@maikers.com"
                     required
                     disabled={isSubmitting}
                   />
