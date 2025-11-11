@@ -34,12 +34,14 @@ export default function DemoShop() {
     setIsSubmitting(true);
     
     try {
+      const demoAffiliateWallet = process.env.NEXT_PUBLIC_AFFILIATE_WALLET_ADDRESS || 'demo-affiliate';
+      
       const response = await fetch('/api/webhooks/conversion', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           campaign_id: referralInfo.campaign || 'demo-campaign',
-          affiliate_id: referralInfo.affiliate || 'none',
+          affiliate_id: referralInfo.affiliate || demoAffiliateWallet,
           conversion_type: 'signup',
           metadata: {
             email,
@@ -50,12 +52,16 @@ export default function DemoShop() {
       });
 
       if (response.ok) {
+        const data = await response.json();
         toast.success('🎉 Signup successful!');
         if (referralInfo.affiliate) {
-          toast.success('Your referrer will receive a payout soon!');
+          toast.success(data.demo_mode 
+            ? 'Demo mode: Conversion tracked (no actual payout)' 
+            : 'Your referrer will receive a payout soon!');
+        } else if (data.demo_mode) {
+          toast.info('Demo conversion tracked successfully');
         }
         setEmail('');
-        // Clear referral info
         sessionStorage.removeItem('referral_campaign');
         sessionStorage.removeItem('referral_affiliate');
         sessionStorage.removeItem('referral_clicked_at');
