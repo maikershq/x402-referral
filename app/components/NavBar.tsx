@@ -7,6 +7,8 @@ import { ThemeToggle } from './ThemeToggle';
 
 export function NavBar() {
   const pathname = usePathname();
+  const network = process.env.NEXT_PUBLIC_SOLANA_NETWORK || 'devnet';
+  const isDevnet = network === 'devnet';
 
   const isActive = (path: string) => pathname?.startsWith(path);
 
@@ -15,8 +17,13 @@ export function NavBar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 justify-between">
           <div className="flex">
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center gap-3">
               <span className="text-xl font-bold text-blue-600 dark:text-blue-400">X402 Referral</span>
+              {isDevnet && (
+                <span className="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 border border-yellow-300 dark:border-yellow-700">
+                  DEVNET
+                </span>
+              )}
             </Link>
             <div className="ml-10 flex items-center space-x-4">
               <Link
