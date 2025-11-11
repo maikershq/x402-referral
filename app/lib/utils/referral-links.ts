@@ -7,9 +7,18 @@ export interface ReferralLinkParams {
 }
 
 export function generateReferralLink(params: ReferralLinkParams): string {
-  const baseUrl = params.baseUrl || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  let baseUrl = params.baseUrl;
   
-  // Simple link format: /r/[campaign]/[affiliate]
+  if (!baseUrl) {
+    if (typeof window !== 'undefined') {
+      baseUrl = window.location.origin;
+    } else {
+      baseUrl = process.env.NEXT_PUBLIC_APP_URL || 
+                process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
+                'http://localhost:3000';
+    }
+  }
+  
   const link = `${baseUrl}/r/${params.campaignId}/${params.affiliateAddress}`;
   
   return link;
